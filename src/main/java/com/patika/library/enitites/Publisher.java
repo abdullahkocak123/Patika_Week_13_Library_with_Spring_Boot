@@ -9,38 +9,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "authors")
+@Table(name = "publishers")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Author {
+public class Publisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "author_id")
+    @Column(name = "publisher_id")
     private Long id;
 
-    @Column(name = "author_name", length = 100, nullable = false)
+    @Column(name = "publisher_name", length =100, nullable = false)
     private String name;
 
-    @Column(name = "author_birth_date")
-    private Integer birthDate;
+    @Column(name = "publisher_establishment_year")
+    private Integer establishmentYear;
 
-    @Column(name = "author_country")
-    private String country;
+    @Column(name = "publisher_address")
+    private String address;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
     private List<Book> bookList = new ArrayList<>();
-
 
 
     @Override
     public String toString() {
-        return "Author{" +
+        return "Publisher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", birthDate=" + birthDate +
-                ", country='" + country + '\'' +
+                ", establishmentYear=" + establishmentYear +
+                ", address='" + address + '\'' +
                 '}';
     }
 }
+
